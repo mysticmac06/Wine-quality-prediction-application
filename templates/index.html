@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        
+        <a href="addnew/" class="btn btn-primary">Add New</a>
+        <br><br>
+        <!-- Table to display existing data -->
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <!-- Column headers -->
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Fixed Acidity</th>
+                    <th>Volatile Acidity</th>
+                    <th>Citric Acid</th>
+                    <th>Chlorides</th>
+                    <th>Total Sulfur Dioxide</th>
+                    <th>Density</th>
+                    <th>Sulphates</th>
+                    <th>Alcohol</th>
+                    <th>Quality</th> 
+                    <th width="200">Modify</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through existing data -->
+                {% for rs in users %}
+                    <tr>
+                        <!-- Display data for each entry -->
+                        <td>{{ rs.id }}</td>
+                        <td>{{ rs.name }}</td>
+                        <td>{{ rs.fixed_acidity }}</td>
+                        <td>{{ rs.volatile_acidity }}</td>
+                        <td>{{ rs.citric_acid }}</td>
+                        <td>{{ rs.chlorides }}</td>
+                        <td>{{ rs.total_sulfur_dioxide }}</td>
+                        <td>{{ rs.density }}</td>
+                        <td>{{ rs.sulphates }}</td>
+                        <td>{{ rs.alcohol }}</td>
+                        <td>{{ rs.quality }}</td> 
+                        <!-- Buttons to edit and delete each entry -->
+                        <td>
+                            <a href="edit/{{ rs.id }}" class="btn btn-success">Edit</a> | <a href="delete/{{ rs.id }}" class="btn btn-danger">Delete</a>  
+                        </td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}

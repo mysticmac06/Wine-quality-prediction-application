@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+    <form action="/update/{{ user.id }}" method="post">
+        <div class="mb-3">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Name" class="form-control" value="{{ user.name }}"/>
+        </div> 
+        <div class="mb-3">
+            <label>Fixed Acidity</label>
+            <input type="number" name="fixed_acidity" placeholder="Fixed Acidity" class="form-control" value="{{ user.fixed_acidity }}"/>
+        </div> 
+        <div class="mb-3">
+            <label>Volatile Acidity</label>
+            <input type="number" name="volatile_acidity" placeholder="Volatile Acidity" class="form-control" value="{{ user.volatile_acidity }}"/>
+        </div> 
+        <div class="mb-3">
+            <label>Citric Acid</label>
+            <input type="number" name="citric_acid" placeholder="Citric Acid" class="form-control" value="{{ user.citric_acid }}"/>
+        </div>
+        <div class="mb-3">
+            <label>Chlorides</label>
+            <input type="number" name="chlorides" placeholder="Chlorides" class="form-control" value="{{ user.chlorides }}"/>
+        </div>
+        <div class="mb-3">
+            <label>Total Sulfur Dioxide</label>
+            <input type="number" name="total_sulfur_dioxide" placeholder="Total Sulfur Dioxide" class="form-control" value="{{ user.total_sulfur_dioxide }}"/>
+        </div>
+        <div class="mb-3">
+            <label>Density</label>
+            <input type="number" name="density" placeholder="Density" class="form-control" value="{{ user.density }}"/>
+        </div>
+        <div class="mb-3">
+            <label>Sulphates</label>
+            <input type="number" name="sulphates" placeholder="Sulphates" class="form-control" value="{{ user.sulphates }}"/>
+        </div>
+        <div class="mb-3">
+            <label>Alcohol</label>
+            <input type="number" name="alcohol" placeholder="Alcohol" class="form-control" value="{{ user.alcohol }}"/>
+        </div>
+        <input type="submit" value="Update" class="btn btn-primary mb-3"/>  
+     </form> 
+{% endblock content %}
