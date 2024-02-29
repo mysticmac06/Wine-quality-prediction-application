@@ -47,8 +47,7 @@ async def add(request: Request, name: str = Form(...), fixed_acidity: float = Fo
 
 @app.get("/addnew")
 async def addnew(request: Request):
-    print(dir(request))
-    print(request.json())
+    
    
     return templates.TemplateResponse("addnew.html", {"request": request})
 
