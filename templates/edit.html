@@ -1,43 +1,64 @@
 {% extends 'base.html' %}
- 
+
 {% block content %}
-    <form action="/update/{{ user.id }}" method="post">
-        <div class="mb-3">
-            <label>Name</label>
-            <input type="text" name="name" placeholder="Name" class="form-control" value="{{ user.name }}"/>
-        </div> 
-        <div class="mb-3">
-            <label>Fixed Acidity</label>
-            <input type="number" name="fixed_acidity" placeholder="Fixed Acidity" class="form-control" value="{{ user.fixed_acidity }}"/>
-        </div> 
-        <div class="mb-3">
-            <label>Volatile Acidity</label>
-            <input type="number" name="volatile_acidity" placeholder="Volatile Acidity" class="form-control" value="{{ user.volatile_acidity }}"/>
-        </div> 
-        <div class="mb-3">
-            <label>Citric Acid</label>
-            <input type="number" name="citric_acid" placeholder="Citric Acid" class="form-control" value="{{ user.citric_acid }}"/>
+<div class="container">
+    <h2 class="text-center mb-4">Edit Wine Entry</h2>
+    <form action="/update/{{ user.id }}" method="post" class="row g-3">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" class="form-control" value="{{ user.name }}"/>
+            </div>
+            <div class="mb-3">
+                <label for="fixed_acidity" class="form-label">Fixed Acidity</label>
+                <input step="any" type="number" id="fixed_acidity" name="fixed_acidity" placeholder="Enter fixed acidity" class="form-control" value="{{ user.fixed_acidity }}"/>
+            </div>
+            <div class="mb-3">
+                <label for="volatile_acidity" class="form-label">Volatile Acidity</label>
+                <input step="any" type="number" id="volatile_acidity" name="volatile_acidity" placeholder="Enter volatile acidity" class="form-control" value="{{ user.volatile_acidity }}"/>
+            </div>
+            <div class="mb-3">
+                <label for="citric_acid" class="form-label">Citric Acid</label>
+                <input step="any" type="number" id="citric_acid" name="citric_acid" placeholder="Enter citric acid" class="form-control" value="{{ user.citric_acid }}"/>
+            </div>
+            <div class="mb-3">
+                <label for="alcohol" class="form-label">Alcohol</label>
+                <input step="any" type="number" id="alcohol" name="alcohol" placeholder="Enter alcohol content" class="form-control" value="{{ user.alcohol }}"/>
+            </div>
         </div>
-        <div class="mb-3">
-            <label>Chlorides</label>
-            <input type="number" name="chlorides" placeholder="Chlorides" class="form-control" value="{{ user.chlorides }}"/>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="chlorides" class="form-label">Chlorides</label>
+                <input step="any" type="number" id="chlorides" name="chlorides" placeholder="Enter chlorides" class="form-control" value="{{ user.chlorides }}"/>
+            </div>
+            <div class="mb-3">
+                <label for="total_sulfur_dioxide" class="form-label">Total Sulfur Dioxide</label>
+                <input step="any" type="number" id="total_sulfur_dioxide" name="total_sulfur_dioxide" placeholder="Enter total sulfur dioxide" class="form-control" value="{{ user.total_sulfur_dioxide }}"/>
+            </div>
+            <div class="mb-3">
+                <label for="density" class="form-label">Density</label>
+                <input step="any" type="number" id="density" name="density" placeholder="Enter density" class="form-control" value="{{ user.density }}"/>
+            </div>
+            <div class="mb-3">
+                <label for="sulphates" class="form-label">Sulphates</label>
+                <input step="any" type="number" id="sulphates" name="sulphates" placeholder="Enter sulphates" class="form-control" value="{{ user.sulphates }}"/>
+            </div>
+            <div class="mb-3">
+                <label for="model"  class="form-label">Select Model</label>
+                <select id="model" name="model" class="form-select">
+                    <option value="Logistic">Logistic regression</option>
+                    <option value="SVC">SVC</option>
+                    <option value="KNN">KNN</option>
+                    <option value="Decision tree">Decision tree</option>
+                    <option value="Random Forest">Random Forest</option>
+                    <option value="Gradient Boost">Gradient Boost</option>
+                </select>
+            </div>
         </div>
-        <div class="mb-3">
-            <label>Total Sulfur Dioxide</label>
-            <input type="number" name="total_sulfur_dioxide" placeholder="Total Sulfur Dioxide" class="form-control" value="{{ user.total_sulfur_dioxide }}"/>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Update </button>
+            <a href="/" class="btn btn-secondary ms-2">Back</a>
         </div>
-        <div class="mb-3">
-            <label>Density</label>
-            <input type="number" name="density" placeholder="Density" class="form-control" value="{{ user.density }}"/>
-        </div>
-        <div class="mb-3">
-            <label>Sulphates</label>
-            <input type="number" name="sulphates" placeholder="Sulphates" class="form-control" value="{{ user.sulphates }}"/>
-        </div>
-        <div class="mb-3">
-            <label>Alcohol</label>
-            <input type="number" name="alcohol" placeholder="Alcohol" class="form-control" value="{{ user.alcohol }}"/>
-        </div>
-        <input type="submit" value="Update" class="btn btn-primary mb-3"/>  
-     </form> 
+    </form>
+</div>
 {% endblock content %}

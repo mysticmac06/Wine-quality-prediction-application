@@ -22,6 +22,8 @@
                     <th>Sulphates</th>
                     <th>Alcohol</th>
                     <th>Quality</th> 
+                    <th>Model Used</th>  <!-- New column for the model used -->
+                    <th>Pobability</th>
                     <th width="200">Modify</th>
                 </tr>
             </thead>
@@ -40,7 +42,9 @@
                         <td>{{ rs.density }}</td>
                         <td>{{ rs.sulphates }}</td>
                         <td>{{ rs.alcohol }}</td>
-                        <td>{{ rs.quality }}</td> 
+                        <td>{{ rs.quality }}</td>
+                        <td>{{ rs.model_used}}</td> 
+                        <td>{{ rs.best_probability}}</td>
                         <!-- Buttons to edit and delete each entry -->
                         <td>
                             <a href="edit/{{ rs.id }}" class="btn btn-success">Edit</a> | <a href="delete/{{ rs.id }}" class="btn btn-danger">Delete</a>  

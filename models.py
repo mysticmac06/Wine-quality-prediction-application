@@ -14,6 +14,8 @@ class User(Base):
     sulphates = Column(Float)
     alcohol = Column(Float)
     quality = Column(Float)  
+    model_used = Column(String)
+    best_probability = Column(Float)
 
     def __repr__(self):
         return f'<User {self.id}>'
