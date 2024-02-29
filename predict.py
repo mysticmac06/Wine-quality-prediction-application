@@ -94,3 +94,7 @@ async def predict_quality(
     best_probability = "{:.2f}".format(best_probability * 100)
 
     return {"prediction": prediction[0], "best_probability": best_probability}
+
+
+
+    
