@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, Float
 from database import Base
 
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = 'users_W'
     id = Column(Integer, primary_key=True)
     name = Column(String(150))
     fixed_acidity = Column(Float)  # Add this line
@@ -14,6 +14,8 @@ class User(Base):
     sulphates = Column(Float)
     alcohol = Column(Float)
     quality = Column(Float)  
+    model_used = Column(String)
+    best_probability = Column(Float)
 
     def __repr__(self):
         return f'<User {self.id}>'
