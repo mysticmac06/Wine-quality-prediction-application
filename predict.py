@@ -92,9 +92,9 @@ async def predict_quality(
     best_class_index = np.argmax(pred_proba)
     best_probability = pred_proba[0][best_class_index]
     best_probability = "{:.2f}".format(best_probability * 100)
-
+    
     return {"prediction": prediction[0], "best_probability": best_probability}
 
 
 
-    
+

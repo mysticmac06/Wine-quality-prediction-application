@@ -23,8 +23,8 @@ def get_db():
 
 @app.get("/")
 async def home(request: Request, db: Session = Depends(get_db)):
-    users = db.query(models.User).order_by(models.User.id.desc())
-    return templates.TemplateResponse("index.html",{"request": request, "users": users})
+    users_W = db.query(models.User).order_by(models.User.id.desc())
+    return templates.TemplateResponse("index.html",{"request": request, "users_W": users_W})
 
 @app.post("/add")
 async def add(request: Request, name: str = Form(...), fixed_acidity: float = Form(...), volatile_acidity: float = Form(...), citric_acid: float = Form(...), chlorides: float = Form(...), total_sulfur_dioxide: float = Form(...), density: float = Form(...), sulphates: float = Form(...), alcohol: float = Form(...), model: str = Form(...), db: Session = Depends(get_db)):
@@ -32,8 +32,8 @@ async def add(request: Request, name: str = Form(...), fixed_acidity: float = Fo
     prediction = await predict_quality(fixed_acidity, volatile_acidity, citric_acid, chlorides, total_sulfur_dioxide, density, sulphates, alcohol, model)
 
     # Extract the prediction value and best probability
-    quality = prediction['prediction']
-    best_probability = prediction['best_probability']
+    quality = float(prediction['prediction'])
+    best_probability = float(prediction['best_probability'])
 
     # Create a new User instance with the predicted quality and the model used
     user = models.User(name=name, fixed_acidity=fixed_acidity, volatile_acidity=volatile_acidity, citric_acid=citric_acid, chlorides=chlorides, total_sulfur_dioxide=total_sulfur_dioxide, density=density, sulphates=sulphates, alcohol=alcohol, quality=quality, model_used=model, best_probability=best_probability)
@@ -62,8 +62,8 @@ async def update(request: Request, user_id: int, name: str = Form(...), fixed_ac
     prediction = await predict_quality(fixed_acidity, volatile_acidity, citric_acid, chlorides, total_sulfur_dioxide, density, sulphates, alcohol, model)
     
     # Extract the prediction value and best probability
-    quality = prediction['prediction']
-    best_probability = prediction['best_probability']
+    quality = float(prediction['prediction'])
+    best_probability = float(prediction['best_probability'])
 
     # Retrieve the user from the database
     user = db.query(models.User).filter(models.User.id == user_id).first()
@@ -87,7 +87,7 @@ async def update(request: Request, user_id: int, name: str = Form(...), fixed_ac
         quality = float(prediction)
     
     # Assign prediction to user's quality
-    user.quality = quality
+    user.quality = float(quality)
     
     # Commit the changes to the database
     db.commit()
